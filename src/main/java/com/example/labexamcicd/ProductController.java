@@ -11,12 +11,12 @@ public class ProductController {
     ProductService myProduct;
 
     @GetMapping("/getProduct")
-    public List<Product> getProduct()
+    public List<Product> getProduct(@PathVariable String Code)
     {
-        return myProduct.getProduct();
+        return myProduct.getProduct(Code);
     }
 
-    @PostMapping("/newProduct")
+    @PostMapping("/products")
     public List<Product> newProduct(@Valid @RequestBody Product product)
     {
         this.product = product;
@@ -29,7 +29,7 @@ public class ProductController {
         return myProduct.updateProduct(id,product);
     }
 
-    @DeleteMapping({"/{id}")
+    @DeleteMapping("/{id}")
     public List<Product> deleteProduct(@PathVariable int id)
     {
         return myProduct.deleteProduct(id);
