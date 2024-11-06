@@ -24,7 +24,7 @@ public class ProductController {
     }
 
     @PutMapping("/products/{code}")
-    public List<Product> updateProduct(@PathVariable String code,@RequestBody Product product)
+    public List<Product> updateProduct(@Valid @PathVariable String code,@RequestBody Product product)
     {
         return myProduct.updateProduct(code,product);
     }

@@ -3,13 +3,15 @@ package com.example.labexamcicd;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.HashMap;
 import java.util.Map;
 
-
+@RestControllerAdvice
 public class GlobalErrorHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String,String>> showErrors(MethodArgumentNotValidException ex)
@@ -23,4 +25,6 @@ public class GlobalErrorHandler {
         }
         return ResponseEntity.status(400).body(errorList);
     }
+
+
 }
